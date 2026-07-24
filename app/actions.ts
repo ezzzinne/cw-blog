@@ -22,6 +22,26 @@ export async function createPost(formData: FormData) {
   redirect("/");
 }
 
+export async function editPost(formData: FormData) {
+  const id = formData.get("id");
+  const title = formData.get("title");
+  const content = formData.get("content");
+
+  const res = await fetch(`${process.env.NEXT_API_BASE_URL}/api/blogs/${id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ title, content }),
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to update post");
+  }
+
+  revalidatePath("/");
+
+  redirect("/");
+}
+
 export async function deletePost(id: number) {
   const res = await fetch(`${process.env.NEXT_API_BASE_URL}/api/blogs/${id}`, {
     method: "DELETE",

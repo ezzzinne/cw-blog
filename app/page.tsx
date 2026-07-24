@@ -9,6 +9,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Pencil } from "lucide-react";
+import Link from "next/link";
 
 type PostProps = {
   id: number;
@@ -42,7 +44,10 @@ export default async function Home() {
             </CardContent>
             <CardFooter className="flex justify-between text-sm text-muted-foreground leading-6">
               <p>Author: {post.author_name}</p>
-              <div>
+              <div className="flex gap-3">
+                <Link href={`/${post.id}/edit`}>
+                  <Pencil className="h-4 w-4" />
+                </Link>
                 <DeleteButton id={post.id} />
               </div>
             </CardFooter>
