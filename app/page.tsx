@@ -1,5 +1,6 @@
-"use server"
+"use server";
 
+import DeleteButton from "@/components/delete-button";
 import Navbar from "@/components/navbar";
 import {
   Card,
@@ -39,8 +40,11 @@ export default async function Home() {
             <CardContent className="text-muted-foreground leading-6">
               <p>{post.content}</p>
             </CardContent>
-            <CardFooter className="text-sm text-muted-foreground leading-6">
+            <CardFooter className="flex justify-between text-sm text-muted-foreground leading-6">
               <p>Author: {post.author_name}</p>
+              <div>
+                <DeleteButton id={post.id} />
+              </div>
             </CardFooter>
           </Card>
         ))}

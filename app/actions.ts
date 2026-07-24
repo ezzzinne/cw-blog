@@ -21,3 +21,20 @@ export async function createPost(formData: FormData) {
   revalidatePath("/");
   redirect("/");
 }
+
+export async function deletePost(id: number) {
+  const res = await fetch(`${process.env.NEXT_API_BASE_URL}/api/blogs/${id}`, {
+    method: "DELETE",
+  });
+
+  if (!res.ok) {
+    throw new Error(`Request failed: ${res.status}`);
+  }
+
+  revalidatePath("/");
+
+  return {
+    success: true,
+    message: "Post deleted successfully",
+  };
+}
