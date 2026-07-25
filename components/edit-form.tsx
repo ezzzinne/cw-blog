@@ -52,7 +52,7 @@ export default function EditForm({ post }: EditFormProps) {
             name="content"
             defaultValue={post.content}
             placeholder="Content"
-            className="input"
+            className="input h-72"
             required
           />
           <Button type="submit">Edit</Button>

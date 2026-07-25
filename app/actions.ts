@@ -15,7 +15,7 @@ export async function createPost(formData: FormData) {
   });
 
   if (!res.ok) {
-    throw new Error(`Request failed: ${res.status}`);
+    throw new Error(`Failed to create post`);
   }
 
   revalidatePath("/");
@@ -48,7 +48,7 @@ export async function deletePost(id: number) {
   });
 
   if (!res.ok) {
-    throw new Error(`Request failed: ${res.status}`);
+    throw new Error(`Failed to delete post`);
   }
 
   revalidatePath("/");

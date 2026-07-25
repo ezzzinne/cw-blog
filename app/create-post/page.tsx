@@ -9,7 +9,7 @@ import { ArrowLeft } from "lucide-react";
 
 export default function Page() {
   const router = useRouter();
-  
+
   return (
     <>
       <div className="mt-4 underline">
@@ -43,7 +43,7 @@ export default function Page() {
           <Textarea
             name="content"
             placeholder="Content"
-            className="input"
+            className="input h-72"
             required
           />
           <Button type="submit">Create</Button>
