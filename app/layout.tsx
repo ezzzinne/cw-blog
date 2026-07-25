@@ -16,6 +16,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "cw-blog",
   description: "A really simple blog platform",
+  icons: {
+    icon: "https://fav.farm/%F0%9F%93%B0",
+  },
 };
 
 export default function RootLayout({
