@@ -23,7 +23,7 @@ export default function Navbar() {
           <Link href={"/create-post"}>
             <Button>
               <PlusIcon />
-              Write Post
+              Write
             </Button>
           </Link>
         </div>
