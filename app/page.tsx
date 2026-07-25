@@ -17,7 +17,9 @@ type PostProps = {
 };
 
 export default async function Home() {
-  const data = await fetch(`${process.env.NEXT_API_BASE_URL}/api/blogs`);
+  const data = await fetch(`${process.env.NEXT_API_BASE_URL}/api/blogs`, {
+    cache: "no-store",
+  });
 
   if (!data.ok) {
     throw new Error(`Request failed: ${data.status}`);
