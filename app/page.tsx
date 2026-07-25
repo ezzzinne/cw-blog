@@ -1,7 +1,5 @@
 "use server";
 
-import DeleteButton from "@/components/delete-button";
-import Navbar from "@/components/navbar";
 import {
   Card,
   CardContent,
@@ -9,7 +7,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Pencil } from "lucide-react";
 import Link from "next/link";
 
 type PostProps = {
@@ -28,28 +25,34 @@ export default async function Home() {
 
   const posts = await data.json();
 
+  const truncateText = (text: string, maxLength = 80) => {
+    if (!text) return "";
+
+    if (text.length <= maxLength) return text;
+
+    return text.slice(0, maxLength) + "...";
+  };
+
   return (
     <>
-      <Navbar />
-      <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3 m-6">
+      <div className="flex flex-col gap-6 m-6">
         {posts.map((post: PostProps) => (
-          <Card key={post.id}>
+          <Card key={post.id} className="flex flex-col justify-between h-full">
             <CardHeader className="flex flex-col justify-between rounded-2xl transition-all">
               <CardTitle className="text-2xl leading-snug line-clamp-2 group-hover:text-primary transition-colors">
                 {post.title}
               </CardTitle>
             </CardHeader>
             <CardContent className="text-muted-foreground leading-6">
-              <p>{post.content}</p>
+              <p>{truncateText(post.content)}</p>
             </CardContent>
-            <CardFooter className="flex justify-between text-sm text-muted-foreground leading-6">
-              <p>Author: {post.author_name}</p>
-              <div className="flex gap-3">
-                <Link href={`/${post.id}/edit`}>
-                  <Pencil className="h-4 w-4" />
-                </Link>
-                <DeleteButton id={post.id} />
-              </div>
+            <CardFooter className="flex justify-end text-sm text-muted-foreground leading-6">
+              <Link
+                href={`/${post.id}/blog`}
+                className="underline font-semibold text-black"
+              >
+                <p>Read More</p>
+              </Link>
             </CardFooter>
           </Card>
         ))}

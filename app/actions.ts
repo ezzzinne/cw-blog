@@ -37,9 +37,9 @@ export async function editPost(formData: FormData) {
     throw new Error("Failed to update post");
   }
 
-  revalidatePath("/");
+  revalidatePath(`/${id}/blog`);
 
-  redirect("/");
+  redirect(`/${id}/blog`);
 }
 
 export async function deletePost(id: number) {

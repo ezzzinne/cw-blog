@@ -15,6 +15,7 @@ import { Trash2 } from "lucide-react";
 import { toast } from "sonner";
 import { useState } from "react";
 import { Button } from "./ui/button";
+import { useRouter } from "next/navigation";
 
 type DeleteButtonProps = {
   id: number;
@@ -23,13 +24,17 @@ type DeleteButtonProps = {
 export default function DeleteButton({ id }: DeleteButtonProps) {
   const [open, setOpen] = useState(false);
 
+  const router = useRouter();
+
   async function handleDelete() {
     try {
       const result = await deletePost(id);
 
+      setOpen(false);
+
       toast.success(result.message);
 
-      setOpen(false);
+      router.push("/");
     } catch {
       toast.error("Failed to delete post.");
     }
