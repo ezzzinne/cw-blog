@@ -35,6 +35,8 @@ export default function DeleteButton({ id }: DeleteButtonProps) {
       toast.success(result.message);
 
       router.push("/");
+      
+      router.refresh();
     } catch {
       toast.error("Failed to delete post.");
     }
