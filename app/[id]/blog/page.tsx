@@ -29,6 +29,14 @@ export default async function BlogPage({ params }: BlogPageProps) {
 
   const post = await res.json();
 
+  if (!post) {
+    return (
+      <div className="flex flex-col justify-center min-h-[80vh] items-center gap-3 text-muted-foreground">
+        <p className="font-medium max-w-full">This post has been deleted.</p>
+      </div>
+    );
+  }
+
   return (
     <>
       <Card key={post.id} className="m-6">

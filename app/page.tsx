@@ -35,6 +35,15 @@ export default async function Home() {
     return text.slice(0, maxLength) + "...";
   };
 
+  if (!posts || posts.length === 0) {
+    return (
+      <div className="flex flex-col justify-center min-h-[80vh] items-center gap-3 text-muted-foreground">
+        <p className="font-medium max-w-full">No posts found.</p>
+        <p className="text-sm mt-1">Be the first to write one.</p>
+      </div>
+    );
+  }
+
   return (
     <>
       <div className="flex flex-col gap-6 m-6">
