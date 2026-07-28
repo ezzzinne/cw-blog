@@ -30,7 +30,7 @@ export default function Page() {
           <Textarea
             name="content"
             placeholder="Content"
-            className="input h-60"
+            className="input h-60 resize-none"
             required
           />
           <Button type="submit">Create</Button>

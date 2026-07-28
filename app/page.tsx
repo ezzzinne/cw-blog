@@ -53,7 +53,7 @@ export default async function Home() {
                 href={`/${post.id}/blog`}
                 className="underline font-semibold text-black"
               >
-                <p>Read More</p>
+                <p aria-label={`Read more about ${post.title}`}>Read More</p>
               </Link>
             </CardFooter>
           </Card>
