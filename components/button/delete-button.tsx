@@ -14,7 +14,7 @@ import { deletePost } from "@/app/actions";
 import { Trash2 } from "lucide-react";
 import { toast } from "sonner";
 import { useState } from "react";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import { useRouter } from "next/navigation";
 
 type DeleteButtonProps = {
@@ -35,7 +35,7 @@ export default function DeleteButton({ id }: DeleteButtonProps) {
       toast.success(result.message);
 
       router.push("/");
-      
+
       router.refresh();
     } catch {
       toast.error("Failed to delete post.");

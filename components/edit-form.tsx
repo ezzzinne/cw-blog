@@ -1,8 +1,8 @@
 import { editPost } from "@/app/actions";
-import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
-import BackButton from "./back-button";
+import BackButton from "./button/back-button";
+import { EditButton } from "./button/edit-button";
 
 type Post = {
   id: number;
@@ -40,7 +40,7 @@ export default function EditForm({ post }: EditFormProps) {
             className="input h-72"
             required
           />
-          <Button type="submit">Edit</Button>
+          <EditButton />
         </div>
       </form>
     </div>

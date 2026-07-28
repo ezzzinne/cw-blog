@@ -1,5 +1,5 @@
-import BackButton from "@/components/back-button";
-import DeleteButton from "@/components/delete-button";
+import BackButton from "@/components/button/back-button";
+import DeleteButton from "@/components/button/delete-button";
 import {
   Card,
   CardContent,

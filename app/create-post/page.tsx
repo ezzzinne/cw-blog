@@ -3,8 +3,8 @@
 import { Input } from "@/components/ui/input";
 import { createPost } from "../actions";
 import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
-import BackButton from "@/components/back-button";
+import BackButton from "@/components/button/back-button";
+import { CreateButton } from "@/components/button/create-button";
 
 export default function Page() {
   return (
@@ -33,7 +33,7 @@ export default function Page() {
             className="input h-60 resize-none"
             required
           />
-          <Button type="submit">Create</Button>
+          <CreateButton />
         </div>
       </form>
     </div>
