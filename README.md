@@ -46,13 +46,13 @@ Some key concepts explored include:
 Clone the repository:
 
 ```bash
-git clone <https://github.com/ezzzinne/cw-blog.git>
+git clone https://github.com/ezzzinne/cw-blog.git
 ```
 
 Navigate into the project:
 
 ```bash
-cd <cw-blog>
+cd cw-blog
 ```
 
 Install dependencies:
