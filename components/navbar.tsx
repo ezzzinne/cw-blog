@@ -7,14 +7,14 @@ export default function Navbar() {
     <header className="border-b sticky top-0 bg-background/80 backdrop-blur z-50">
       <nav className="mx-auto flex h-16 items-center justify-between px-4">
         <div className="text-xl font-bold tracking-tight">Blog Page</div>
-        <div className="flex">
+        {/* <div className="flex">
           <Button variant="link" className="font-semibold">
             <Link href={"/"}>Feed</Link>
           </Button>
           <Button variant="link" className="font-semibold">
             <Link href={"/"}>My blogs</Link>
           </Button>
-        </div>
+        </div> */}
         <div className="flex items-center gap-2">
           <Button>
             <PlusIcon />

@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Blog Application
+
+A modern blog application built with **Next.js 15**, **TypeScript**, and **Tailwind CSS**, featuring full CRUD (Create, Read, Update, Delete) functionality. The project demonstrates the use of the Next.js App Router, Server Actions, and modern React features to build a responsive and accessible user experience.
+
+## Features
+
+* Create, read, update, and delete blog posts
+* Responsive user interface
+* Server Actions for form submissions and data mutations
+* Loading and error states during form submissions using `useFormStatus`
+* Optimistic user experience with `revalidatePath`
+* Accessible UI built with shadcn/ui components
+* Clean, reusable component architecture
+
+## Tech Stack
+
+* Next.js 15 (App Router)
+* React 19
+* TypeScript
+* Tailwind CSS
+* shadcn/ui
+* Lucide React
+* Sonner (toast notifications)
+
+## What I Learned
+
+Although this is a relatively small project, it helped me gain a much deeper understanding of the Next.js App Router and how client and server code work together.
+
+Some key concepts explored include:
+
+* Using **Server Actions** to handle form submissions without creating custom API routes.
+* Working with the **FormData** object to extract form values on the server.
+* Managing submission state with **`useFormStatus`**.
+* Keeping UI in sync after data mutations using **`revalidatePath`**.
+* Creating route-level loading and error UI using **`loading.tsx`** and **`error.tsx`**.
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+* Node.js 20+
+* npm, pnpm, yarn, or Bun
+
+### Installation
+
+Clone the repository:
+
+```bash
+git clone <https://github.com/ezzzinne/cw-blog.git>
+```
+
+Navigate into the project:
+
+```bash
+cd <cw-blog>
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+or
+
+```bash
+bun install
+```
+
+Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
+```
+
+or
+
+```bash
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Acknowledgements
 
-## Learn More
+This project was built as part of a frontend development task by the Cowrywise Frontend Skill-Based Team.
 
-To learn more about Next.js, take a look at the following resources:
+## License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is open source and available under the MIT License.
