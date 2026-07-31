@@ -2,11 +2,13 @@
 
 import { Input } from "@/components/ui/input";
 import { createPost } from "../actions";
-import { Textarea } from "@/components/ui/textarea";
 import BackButton from "@/components/button/back-button";
 import { CreateButton } from "@/components/button/create-button";
+import { MarkdownEditor } from "@/components/editor/markdown-editor";
+import { useState } from "react";
 
 export default function Page() {
+  const [content, setContent] = useState("");
   return (
     <div className="mt-4">
       <BackButton />
@@ -27,12 +29,11 @@ export default function Page() {
             className="input h-12"
             required
           />
-          <Textarea
-            name="content"
-            placeholder="Content"
-            className="input h-60 resize-none"
-            required
+          <MarkdownEditor
+            value={content}
+            onChange={(value) => setContent(value || "")}
           />
+          <Input type="hidden" name="content" value={content} />
           <CreateButton />
         </div>
       </form>

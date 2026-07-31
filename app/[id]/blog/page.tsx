@@ -11,6 +11,8 @@ import { Separator } from "@/components/ui/separator";
 import { Pencil } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import remarkGfm from "remark-gfm";
+import ReactMarkdown from "react-markdown";
 
 type BlogPageProps = {
   params: Promise<{
@@ -51,7 +53,9 @@ export default async function BlogPage({ params }: BlogPageProps) {
 
         <CardContent className="text-muted-foreground leading-6">
           <article className="max-w-none text-base leading-8 [&_h1]:mt-10 [&_h1]:mb-4 [&_h1]:text-4xl [&_h1]:font-bold [&_h2]:mt-8 [&_h2]:mb-3 [&_h2]:text-2xl [&_p]:mb-6 [&_ul]:mb-6 [&_blockquote]:border-l-4 [&_blockquote]:pl-4 [&_blockquote]:italic">
-            {post.content}
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+              {post.content}
+            </ReactMarkdown>
           </article>
         </CardContent>
         <CardFooter className="flex justify-between text-sm font-semibold leading-tight truncate">

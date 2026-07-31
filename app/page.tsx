@@ -8,6 +8,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import Link from "next/link";
+import remarkGfm from "remark-gfm";
+import ReactMarkdown from "react-markdown";
 
 type PostProps = {
   id: number;
@@ -55,7 +57,9 @@ export default async function Home() {
               </CardTitle>
             </CardHeader>
             <CardContent className="text-muted-foreground leading-6">
-              <p>{truncateText(post.content)}</p>
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                {truncateText(post.content)}
+              </ReactMarkdown>
             </CardContent>
             <CardFooter className="flex justify-end text-sm text-muted-foreground leading-6">
               <Link

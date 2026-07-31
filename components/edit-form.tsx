@@ -1,8 +1,11 @@
+"use client";
+
 import { editPost } from "@/app/actions";
 import { Input } from "./ui/input";
-import { Textarea } from "./ui/textarea";
 import BackButton from "./button/back-button";
 import { EditButton } from "./button/edit-button";
+import { MarkdownEditor } from "./editor/markdown-editor";
+import { useState } from "react";
 
 type Post = {
   id: number;
@@ -15,6 +18,8 @@ type EditFormProps = {
 };
 
 export default function EditForm({ post }: EditFormProps) {
+  const [content, setContent] = useState(post.content);
+
   return (
     <div className="mt-4">
       <BackButton />
@@ -33,13 +38,14 @@ export default function EditForm({ post }: EditFormProps) {
             className="input h-12"
             required
           />
-          <Textarea
-            name="content"
-            defaultValue={post.content}
-            placeholder="Content"
-            className="input h-72"
-            required
+
+          <MarkdownEditor
+            value={content}
+            onChange={(value) => setContent(value || "")}
           />
+
+          <Input type="hidden" name="content" value={content} />
+
           <EditButton />
         </div>
       </form>
