@@ -31,7 +31,7 @@ export default function HomePage() {
   return (
     <main className="bg-background text-foreground">
       <section>
-        <div className="mx-auto flex flex-col justify-center items-center max-w-7xl gap-10 px-4 sm:px-6 py-12 lg:px-8">
+        <div className="mx-auto flex flex-col justify-center items-center max-w-7xl gap-10 px-4 sm:px-6 pt-12 pb-8 lg:px-8">
           <div className="flex flex-col justify-center">
             <h1 className="max-w-3xl text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
               Write ideas worth sharing.
@@ -52,7 +52,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl mt-10 px-4 sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-7xl pb-8 px-4 sm:px-6 lg:px-8">
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((feature) => {
             const Icon = feature.icon;
