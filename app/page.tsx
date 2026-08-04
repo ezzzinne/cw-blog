@@ -31,7 +31,7 @@ export default function HomePage() {
   return (
     <main className="bg-background text-foreground">
       <section>
-        <div className="mx-auto flex flex-col justify-center items-center max-w-7xl gap-10 px-4 sm:px-6 md:py-12 lg:px-8">
+        <div className="mx-auto flex flex-col justify-center items-center max-w-7xl gap-10 px-4 sm:px-6 py-12 lg:px-8">
           <div className="flex flex-col justify-center">
             <h1 className="max-w-3xl text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
               Write ideas worth sharing.
