@@ -27,7 +27,7 @@ export default function EditForm({ post }: EditFormProps) {
       <h2 className="text-2xl text-center mb-6">Edit Post</h2>
 
       <form action={editPost}>
-        <div className="flex flex-col justify-between items-center gap-6 max-w-7xl mx-auto w-full">
+        <div className="flex flex-col justify-between items-center gap-6 max-w-7xl mx-auto w-full p-4">
           <Input type="hidden" name="id" defaultValue={post.id} />
 
           <Input

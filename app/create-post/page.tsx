@@ -14,7 +14,7 @@ export default function Page() {
       <BackButton />
       <h2 className="text-2xl text-center mb-6">Create a Post</h2>
       <form action={createPost}>
-        <div className="flex flex-col justify-between items-center gap-6 max-w-7xl mx-auto w-full">
+        <div className="flex flex-col justify-between items-center gap-6 max-w-7xl mx-auto w-full p-4">
           <Input
             type="text"
             name="author_name"

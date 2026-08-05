@@ -12,7 +12,7 @@ export default function BackButton() {
       <Button
         variant="ghost"
         size="sm"
-        className="flex items-center gap-2"
+        className="flex items-center gap-2 cursor-pointer"
         onClick={() => router.back()}
       >
         <ArrowLeft className="w-4 h-4" />
