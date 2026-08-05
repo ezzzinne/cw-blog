@@ -20,6 +20,13 @@ export default function Navbar() {
           </Button>
         </div> */}
         <div className="flex items-center gap-2">
+          {/* <Button variant="outline" className="cursor-pointer">
+            <Link href="/login">Login</Link>
+          </Button>
+
+          <Button className="cursor-pointer">
+            <Link href="/register">Sign Up</Link>
+          </Button> */}
           <Button className="cursor-pointer">
             <PlusIcon />
             <Link href={"/create-post"}>Write</Link>
