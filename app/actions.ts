@@ -2,11 +2,57 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import z from "zod";
 
-export async function createPost(formData: FormData) {
-  const title = formData.get("title");
-  const content = formData.get("content");
-  const author_name = formData.get("author_name");
+const postSchema = z.object({
+  title: z
+    .string()
+    .trim()
+    .min(1, { message: "A title is required." })
+    .max(100, "Title must be 100 characters or less"),
+  content: z.string().trim().min(1, { message: "Blog content is required." }),
+  author_name: z
+    .string()
+    .trim()
+    .min(1, { message: "Author name is required." })
+    .max(50, "Author name must be 50 characters or less"),
+});
+
+const editSchema = postSchema.omit({
+  author_name: true,
+});
+
+export type FormState = {
+  errors?: {
+    title?: string[];
+    content?: string[];
+    author_name?: string[];
+  };
+};
+
+export type EditState = {
+  errors?: {
+    title?: string[];
+    content?: string[];
+  };
+};
+
+export async function createPost(prevState: FormState, formData: FormData) {
+  const result = postSchema.safeParse({
+    title: formData.get("title"),
+    content: formData.get("content"),
+    author_name: formData.get("author_name"),
+  });
+
+  if (!result.success) {
+    const errors = z.flattenError(result.error);
+
+    return {
+      errors: errors.fieldErrors,
+    };
+  }
+
+  const { title, content, author_name } = result.data;
 
   const res = await fetch(`${process.env.NEXT_API_BASE_URL}/api/blogs`, {
     method: "POST",
@@ -15,17 +61,34 @@ export async function createPost(formData: FormData) {
   });
 
   if (!res.ok) {
-    throw new Error(`Failed to create post`);
+    return {
+      message: "Failed to create post.",
+    };
   }
 
-  revalidatePath("/");
-  redirect("/");
+  revalidatePath("/explore");
+  redirect("/explore");
 }
 
-export async function editPost(formData: FormData) {
-  const id = formData.get("id");
-  const title = formData.get("title");
-  const content = formData.get("content");
+export async function editPost(
+  id: number,
+  prevState: EditState,
+  formData: FormData,
+) {
+  const result = editSchema.safeParse({
+    title: formData.get("title"),
+    content: formData.get("content"),
+  });
+
+  if (!result.success) {
+    const errors = z.flattenError(result.error);
+
+    return {
+      errors: errors.fieldErrors,
+    };
+  }
+
+  const { title, content } = result.data;
 
   const res = await fetch(`${process.env.NEXT_API_BASE_URL}/api/blogs/${id}`, {
     method: "PUT",
@@ -34,7 +97,9 @@ export async function editPost(formData: FormData) {
   });
 
   if (!res.ok) {
-    throw new Error("Failed to update post");
+    return {
+      message: "Failed to update post.",
+    };
   }
 
   revalidatePath(`/${id}/blog`);
@@ -51,7 +116,7 @@ export async function deletePost(id: number) {
     throw new Error(`Failed to delete post`);
   }
 
-  revalidatePath("/");
+  revalidatePath("/explore");
 
   return {
     success: true,
