@@ -30,13 +30,16 @@ export default function EditForm({ post }: EditFormProps) {
   );
 
   return (
-    <div className="mt-4">
+    <div className="mx-auto w-full max-w-5xl px-5 py-6 sm:px-8 sm:py-10">
       <BackButton />
 
-      <h2 className="text-2xl text-center mb-6">Edit Post</h2>
+      <div className="mb-8 mt-6 text-center">
+        <span className="text-xs font-bold tracking-[0.16em] text-primary uppercase">Refine your draft</span>
+        <h2 className="mt-2 text-4xl font-extrabold tracking-tighter">Edit post</h2>
+      </div>
 
       <form action={formAction}>
-        <div className="flex flex-col justify-between items-center gap-6 max-w-7xl mx-auto w-full p-4">
+        <div className="flex w-full flex-col items-center gap-6 rounded-2xl border border-border/70 bg-card/80 p-5 shadow-lg shadow-primary/5 sm:p-8">
           <Input type="hidden" name="id" defaultValue={post.id} />
 
           <Input
@@ -44,7 +47,7 @@ export default function EditForm({ post }: EditFormProps) {
             name="title"
             defaultValue={post.title}
             placeholder="Blog title"
-            className="input h-12"
+            className="input h-12 bg-background/70"
             required
           />
 
@@ -59,7 +62,7 @@ export default function EditForm({ post }: EditFormProps) {
 
           {state.errors?.content && <p>{state.errors.content}</p>}
 
-          <Button type="submit" disabled={isPending}>
+          <Button type="submit" disabled={isPending} className="h-11 rounded-full px-6 shadow-md shadow-primary/20">
             {isPending ? "Editing..." : "Edit Post"}
           </Button>
         </div>

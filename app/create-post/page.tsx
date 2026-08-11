@@ -16,16 +16,20 @@ export default function Page() {
     initialState,
   );
   return (
-    <div className="mt-4">
+    <div className="mx-auto w-full max-w-5xl px-5 py-6 sm:px-8 sm:py-10">
       <BackButton />
-      <h2 className="text-2xl text-center mb-6">Create a Post</h2>
+      <div className="mb-8 mt-6 text-center">
+        <span className="text-xs font-bold tracking-[0.16em] text-primary uppercase">Your draft</span>
+        <h2 className="mt-2 text-4xl font-extrabold tracking-tighter">Create a post</h2>
+        <p className="mt-3 text-muted-foreground">Give your ideas a beautiful place to land.</p>
+      </div>
       <form action={formAction}>
-        <div className="flex flex-col justify-between items-center gap-6 max-w-7xl mx-auto w-full p-4">
+        <div className="flex w-full flex-col items-center gap-6 rounded-2xl border border-border/70 bg-card/80 p-5 shadow-lg shadow-primary/5 sm:p-8">
           <Input
             type="text"
             name="author_name"
             placeholder="Author"
-            className="input h-12"
+            className="input h-12 bg-background/70"
           />
 
           {state.errors?.author_name && (
@@ -38,7 +42,7 @@ export default function Page() {
             type="text"
             name="title"
             placeholder="Blog title"
-            className="input h-12"
+            className="input h-12 bg-background/70"
           />
 
           {state.errors?.title && (
@@ -55,7 +59,7 @@ export default function Page() {
             <p className="text-sm text-destructive">{state.errors.content}</p>
           )}
 
-          <Button type="submit" disabled={isPending}>
+          <Button type="submit" disabled={isPending} className="h-11 rounded-full px-6 shadow-md shadow-primary/20">
             {isPending ? "Creating..." : "Create Post"}
           </Button>
         </div>

@@ -43,8 +43,8 @@ export default function DeleteButton({ id }: DeleteButtonProps) {
   }
   return (
     <AlertDialog open={open} onOpenChange={setOpen}>
-      <AlertDialogTrigger>
-        <Trash2 className="cursor-pointer w-4 h-4" />
+      <AlertDialogTrigger className="text-destructive transition-colors hover:text-foreground" aria-label="Delete post">
+        <Trash2 className="h-4 w-4 cursor-pointer" />
       </AlertDialogTrigger>
       <AlertDialogContent className="w-[calc(100vw-2rem)] sm:max-w-lg max-h-[85vh] overflow-y-auto">
         <AlertDialogHeader>
@@ -58,7 +58,7 @@ export default function DeleteButton({ id }: DeleteButtonProps) {
 
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <Button onClick={handleDelete} className="bg-destructive text-white">
+          <Button onClick={handleDelete} className="bg-destructive text-white hover:bg-destructive/85">
             Delete
           </Button>
         </AlertDialogFooter>

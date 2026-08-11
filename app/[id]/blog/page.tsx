@@ -41,33 +41,35 @@ export default async function BlogPage({ params }: BlogPageProps) {
 
   return (
     <>
-      <Card key={post.id} className="m-6">
-        <BackButton />
-        <CardHeader className="flex flex-col justify-between transition-all">
-          <CardTitle className="text-3xl font-bold tracking-tight mb-2">
+      <main className="mx-auto w-full max-w-4xl px-5 py-6 sm:px-8 sm:py-10">
+      <Card key={post.id} className="border border-border/70 bg-card/85 py-5 shadow-xl shadow-primary/5 sm:py-7">
+        <div className="px-4 sm:px-8"><BackButton /></div>
+        <CardHeader className="flex flex-col justify-between px-5 pt-6 sm:px-10 sm:pt-8">
+          <span className="mb-4 text-xs font-bold tracking-[0.16em] text-primary uppercase">Featured story</span>
+          <CardTitle className="mb-3 text-4xl font-extrabold tracking-[-0.055em] sm:text-5xl">
             {post.title}
           </CardTitle>
         </CardHeader>
 
         <Separator />
 
-        <CardContent className="text-muted-foreground leading-6">
-          <article className="max-w-none text-base leading-8 [&_h1]:mt-10 [&_h1]:mb-4 [&_h1]:text-4xl [&_h1]:font-bold [&_h2]:mt-8 [&_h2]:mb-3 [&_h2]:text-2xl [&_p]:mb-6 [&_ul]:mb-6 [&_blockquote]:border-l-4 [&_blockquote]:pl-4 [&_blockquote]:italic">
+        <CardContent className="px-5 pt-8 text-muted-foreground sm:px-10">
+          <article className="editorial-prose max-w-none text-[1.05rem] leading-8">
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
               {post.content}
             </ReactMarkdown>
           </article>
         </CardContent>
-        <CardFooter className="flex justify-between text-sm font-semibold leading-tight truncate">
-          <p>Author: {post.author_name}</p>
-          <div className="flex gap-3">
-            <Link href={`/${post.id}/edit`}>
+        <CardFooter className="flex justify-between rounded-b-xl bg-muted/55 px-5 py-5 text-sm font-semibold leading-tight sm:px-10">
+          <p className="text-muted-foreground">Written by <span className="text-foreground">{post.author_name}</span></p>
+          <div className="flex items-center gap-4 text-primary">
+            <Link href={`/${post.id}/edit`} className="transition-colors hover:text-foreground" aria-label="Edit post">
               <Pencil className="h-4 w-4" />
             </Link>
             <DeleteButton id={post.id} />
           </div>
         </CardFooter>
-      </Card>
+      </Card></main>
     </>
   );
 }
