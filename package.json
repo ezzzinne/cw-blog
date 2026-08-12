@@ -13,6 +13,7 @@
     "@uiw/react-md-editor": "^4.1.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "firebase": "^12.17.1",
     "lucide-react": "^1.25.0",
     "next": "16.2.11",
     "react": "19.2.4",
