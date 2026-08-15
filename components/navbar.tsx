@@ -20,7 +20,12 @@ export default function Navbar() {
       <nav className="mx-auto flex h-18 max-w-7xl items-center justify-between px-5 sm:px-8">
         <div className="text-lg font-extrabold tracking-tighter sm:text-xl">
           <div className="cursor-pointer transition-opacity hover:opacity-70">
-            <Link href={"/"} className="flex items-center gap-2"><span className="grid size-7 place-items-center rounded-lg bg-primary text-sm text-primary-foreground shadow-sm">B</span>Blog Page</Link>
+            <Link href={"/"} className="flex items-center gap-2">
+              <span className="grid size-7 place-items-center rounded-lg bg-primary text-sm text-primary-foreground shadow-sm">
+                B
+              </span>
+              Blog Page
+            </Link>
           </div>
         </div>
         <div className="flex items-center gap-2">
@@ -34,7 +39,10 @@ export default function Navbar() {
             </>
           ) : (
             <>
-              <Button variant="ghost" className="h-10 cursor-pointer rounded-full px-3 font-semibold">
+              <Button
+                variant="ghost"
+                className="h-10 cursor-pointer rounded-full px-3 font-semibold"
+              >
                 <Link href="/login">Log in</Link>
               </Button>
               <Button className="h-10 cursor-pointer rounded-full px-4 shadow-sm shadow-primary/20">
