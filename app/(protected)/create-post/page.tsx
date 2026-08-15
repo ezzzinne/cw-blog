@@ -1,7 +1,7 @@
 "use client";
 
 import { Input } from "@/components/ui/input";
-import { createPost, FormState } from "../actions";
+import { createPost, FormState } from "@/app/actions";
 import BackButton from "@/components/button/back-button";
 import { MarkdownEditor } from "@/components/editor/markdown-editor";
 import { useActionState, useState } from "react";
