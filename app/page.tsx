@@ -43,7 +43,7 @@ export default function HomePage() {
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <Button size="lg" className="h-12 rounded-full px-6 shadow-lg shadow-primary/20">
-                <Link href="/signup">Start writing</Link>
+                <Link href="/create-post">Start writing</Link>
               </Button>
               <Button size="lg" variant="outline" className="h-12 rounded-full border-foreground/15 bg-card/70 px-6">
                 <Link href="/explore">Explore posts</Link>
