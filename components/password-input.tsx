@@ -5,13 +5,11 @@ import { Eye, EyeOff } from "lucide-react";
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
-type PasswordInputProps =
-  React.InputHTMLAttributes<HTMLInputElement>;
+type PasswordInputProps = React.InputHTMLAttributes<HTMLInputElement>;
 
-export function PasswordInput({
-  ...props
-}: PasswordInputProps) {
+export function PasswordInput({ className, ...props }: PasswordInputProps) {
   const [show, setShow] = React.useState(false);
 
   return (
@@ -19,7 +17,7 @@ export function PasswordInput({
       <Input
         {...props}
         type={show ? "text" : "password"}
-        className="pr-10"
+        className={cn(className, "pr-10")}
       />
 
       <Button
@@ -29,11 +27,7 @@ export function PasswordInput({
         className="absolute right-0 top-0 h-full"
         onClick={() => setShow((prev) => !prev)}
       >
-        {show ? (
-          <EyeOff className="h-4 w-4" />
-        ) : (
-          <Eye className="h-4 w-4" />
-        )}
+        {show ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
       </Button>
     </div>
   );

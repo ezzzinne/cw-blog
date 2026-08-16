@@ -49,8 +49,19 @@ function getFirebaseAuthError(error: unknown): string {
 }
 
 const loginSchema = z.object({
-  email: z.email("Please enter a valid email address.").trim().toLowerCase(),
-  password: z.string().min(8, "Password must be at least 8 characters."),
+  email: z.email("Please enter a valid email.").trim().toLowerCase(),
+
+  password: z
+    .string()
+    .min(8, "Password must be at least 8 characters.")
+    .max(128, "Password must not exceed 128 characters.")
+    .regex(/[A-Z]/, "Password must contain at least one uppercase letter.")
+    .regex(/[a-z]/, "Password must contain at least one lowercase letter.")
+    .regex(/[0-9]/, "Password must contain at least one number.")
+    .regex(
+      /[^A-Za-z0-9\s]/,
+      "Password must contain at least one special character.",
+    ),
 });
 
 export default function LoginPage() {
@@ -90,13 +101,13 @@ export default function LoginPage() {
       await signInWithEmailAndPassword(auth, email, password);
 
       router.push("/explore");
-    } catch {
+    } catch (error) {
       setError(getFirebaseAuthError(error));
     } finally {
       setIsLoggingIn(false);
     }
   }
-  
+
   return (
     <div className="flex min-h-[calc(100vh-4.5rem)] items-center justify-center px-5 py-12 sm:px-8">
       <Card className="w-full max-w-md border border-border/70 bg-card/90 py-7 shadow-2xl shadow-primary/10">
@@ -110,7 +121,7 @@ export default function LoginPage() {
         </CardHeader>
 
         <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-5 pt-3">
+          <form noValidate onSubmit={handleSubmit} className="space-y-5 pt-3">
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
               <Input
@@ -118,6 +129,12 @@ export default function LoginPage() {
                 name="email"
                 id="email"
                 className="h-11 bg-background/70"
+                onChange={() => {
+                  setErrors((prev) => ({
+                    ...prev,
+                    email: undefined,
+                  }));
+                }}
               />
 
               {errors.email && (
@@ -132,6 +149,12 @@ export default function LoginPage() {
                 name="password"
                 id="password"
                 className="h-11 bg-background/70"
+                onChange={() => {
+                  setErrors((prev) => ({
+                    ...prev,
+                    password: undefined,
+                  }));
+                }}
               />
 
               {errors.password && (

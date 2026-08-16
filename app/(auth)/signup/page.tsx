@@ -110,7 +110,7 @@ export default function SignupPage() {
         </CardHeader>
 
         <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-5 pt-3">
+          <form noValidate onSubmit={handleSubmit} className="space-y-5 pt-3">
             {/* <div className="space-y-2">
               <Label htmlFor="name">Name</Label>
               <Input name="name" id="name" className="h-11 bg-background/70" />
@@ -123,6 +123,12 @@ export default function SignupPage() {
                 type="email"
                 id="email"
                 className="h-11 bg-background/70"
+                onChange={() => {
+                  setErrors((prev) => ({
+                    ...prev,
+                    email: undefined,
+                  }));
+                }}
               />
 
               {errors.email && (
@@ -137,6 +143,12 @@ export default function SignupPage() {
                 type="password"
                 id="password"
                 className="h-11 bg-background/70"
+                onChange={() => {
+                  setErrors((prev) => ({
+                    ...prev,
+                    password: undefined,
+                  }));
+                }}
               />
 
               {errors.password && (
