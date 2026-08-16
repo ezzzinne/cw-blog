@@ -15,13 +15,28 @@ export default function Page() {
     createPost,
     initialState,
   );
+  const [error, setError] = useState<{
+    author_name: boolean;
+    title: boolean;
+    content: boolean;
+  }>({
+    author_name: false,
+    title: false,
+    content: false,
+  });
   return (
     <div className="mx-auto w-full max-w-5xl px-5 py-6 sm:px-8 sm:py-10">
       <BackButton />
       <div className="mb-8 mt-6 text-center">
-        <span className="text-xs font-bold tracking-[0.16em] text-primary uppercase">Your draft</span>
-        <h2 className="mt-2 text-4xl font-extrabold tracking-tighter">Create a post</h2>
-        <p className="mt-3 text-muted-foreground">Give your ideas a beautiful place to land.</p>
+        <span className="text-xs font-bold tracking-[0.16em] text-primary uppercase">
+          Your draft
+        </span>
+        <h2 className="mt-2 text-4xl font-extrabold tracking-tighter">
+          Create a post
+        </h2>
+        <p className="mt-3 text-muted-foreground">
+          Give your ideas a beautiful place to land.
+        </p>
       </div>
       <form action={formAction} aria-label="Create post form">
         <div className="flex w-full flex-col items-center gap-6 rounded-2xl border border-border/70 bg-card/80 p-5 shadow-lg shadow-primary/5 sm:p-8">
@@ -30,9 +45,15 @@ export default function Page() {
             name="author_name"
             placeholder="Author"
             className="input h-12 bg-background/70"
+            onChange={() =>
+              setError((prev) => ({
+                ...prev,
+                author_name: true,
+              }))
+            }
           />
 
-          {state.errors?.author_name && (
+          {state.errors?.author_name && !error?.author_name && (
             <p className="text-sm text-destructive">
               {state.errors.author_name[0]}
             </p>
@@ -43,23 +64,40 @@ export default function Page() {
             name="title"
             placeholder="Blog title"
             className="input h-12 bg-background/70"
+            onChange={() =>
+              setError((prev) => ({
+                ...prev,
+                title: true,
+              }))
+            }
           />
 
-          {state.errors?.title && (
+          {state.errors?.title && !error?.title && (
             <p className="text-sm text-destructive">{state.errors.title[0]}</p>
           )}
 
           <MarkdownEditor
             value={content}
-            onChange={(value) => setContent(value || "")}
+            onChange={(value) => {
+              setContent(value || "");
+
+              setError((prev) => ({
+                ...prev,
+                content: true,
+              }));
+            }}
           />
           <Input type="hidden" name="content" value={content} />
 
-          {state.errors?.content && (
+          {state.errors?.content && !error?.content && (
             <p className="text-sm text-destructive">{state.errors.content}</p>
           )}
 
-          <Button type="submit" disabled={isPending} className="h-11 rounded-full px-6 shadow-md shadow-primary/20">
+          <Button
+            type="submit"
+            disabled={isPending}
+            className="h-11 rounded-full px-6 shadow-md shadow-primary/20"
+          >
             {isPending ? "Creating..." : "Create Post"}
           </Button>
         </div>

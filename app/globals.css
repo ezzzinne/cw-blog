@@ -107,4 +107,3 @@
 [data-color-mode="light"] .w-md-editor, [data-color-mode="light"] .w-md-editor-toolbar { border-color: var(--border); background: var(--card); box-shadow: none; }
 [data-color-mode="light"] .w-md-editor { border-radius: 1rem; overflow: hidden; }
 [data-color-mode="light"] .w-md-editor-toolbar { border-bottom: 1px solid var(--border); padding: .45rem; }
-[data-color-mode="light"] .w-md-editor-text-input, [data-color-mode="light"] .w-md-editor-text-pre, [data-color-mode="light"] .wmde-markdown { font-family: var(--font-geist-sans), sans-serif; font-size: .95rem; }

@@ -14,10 +14,15 @@ type PostActionsProps = {
 
 export default function PostActions({ postId }: PostActionsProps) {
   const [user, setUser] = useState<User | null>(auth.currentUser);
-  const [loading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    return onAuthStateChanged(auth, setUser);
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setLoading(false);
+    });
+
+    return unsubscribe;
   }, []);
 
   if (loading || !user) {
