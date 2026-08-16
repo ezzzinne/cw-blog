@@ -1,5 +1,4 @@
 import BackButton from "@/components/button/back-button";
-import DeleteButton from "@/components/button/delete-button";
 import {
   Card,
   CardContent,
@@ -8,11 +7,10 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { Pencil } from "lucide-react";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import remarkGfm from "remark-gfm";
 import ReactMarkdown from "react-markdown";
+import PostActions from "@/components/post-actions";
 
 type BlogPageProps = {
   params: Promise<{
@@ -62,12 +60,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
         </CardContent>
         <CardFooter className="flex justify-between rounded-b-xl bg-muted/55 px-5 py-5 text-sm font-semibold leading-tight sm:px-10">
           <p className="text-muted-foreground">Written by <span className="text-foreground">{post.author_name}</span></p>
-          <div className="flex items-center gap-4 text-primary">
-            <Link href={`/${post.id}/edit`} className="transition-colors hover:text-foreground" aria-label="Edit post">
-              <Pencil className="h-4 w-4" />
-            </Link>
-            <DeleteButton id={post.id} />
-          </div>
+          <PostActions postId={post.id} />
         </CardFooter>
       </Card></main>
     </>

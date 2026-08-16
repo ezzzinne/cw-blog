@@ -27,7 +27,7 @@ export default function LogOutButton() {
 
     setOpen(false);
 
-    router.push("/login");
+    router.replace("/login");
 
     router.refresh();
   }

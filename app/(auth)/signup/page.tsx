@@ -89,7 +89,7 @@ export default function SignupPage() {
 
       await createUserWithEmailAndPassword(auth, email, password);
 
-      router.push("/explore");
+      router.replace("/explore");
     } catch (error) {
       setError(getFirebaseErrorMessage(error));
     } finally {

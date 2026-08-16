@@ -100,7 +100,7 @@ export default function LoginPage() {
 
       await signInWithEmailAndPassword(auth, email, password);
 
-      router.push("/explore");
+      router.replace("/explore");
     } catch (error) {
       setError(getFirebaseAuthError(error));
     } finally {
