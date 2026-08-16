@@ -14,6 +14,7 @@ import { useRouter } from "next/navigation";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/firebase";
 import { FirebaseError } from "firebase/app";
+import { PasswordInput } from "@/components/password-input";
 
 function getFirebaseAuthError(error: unknown): string {
   if (!(error instanceof FirebaseError)) {
@@ -126,7 +127,7 @@ export default function LoginPage() {
 
             <div className="space-y-2">
               <Label htmlFor="password">Password</Label>
-              <Input
+              <PasswordInput
                 type="password"
                 name="password"
                 id="password"

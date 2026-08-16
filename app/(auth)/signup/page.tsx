@@ -15,6 +15,7 @@ import { useState } from "react";
 import z from "zod";
 
 import { useRouter } from "next/navigation";
+import { PasswordInput } from "@/components/password-input";
 
 function getFirebaseErrorMessage(error: unknown) {
   if (!(error instanceof FirebaseError)) {
@@ -131,7 +132,7 @@ export default function SignupPage() {
 
             <div className="space-y-2">
               <Label htmlFor="password">Password</Label>
-              <Input
+              <PasswordInput
                 name="password"
                 type="password"
                 id="password"
