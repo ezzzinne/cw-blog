@@ -110,7 +110,7 @@ export default function SignupPage() {
         </CardHeader>
 
         <CardContent>
-          <form noValidate onSubmit={handleSubmit} className="space-y-5 pt-3">
+          <form noValidate onSubmit={handleSubmit} className="space-y-5 pt-3" aria-label="Sign up form">
             {/* <div className="space-y-2">
               <Label htmlFor="name">Name</Label>
               <Input name="name" id="name" className="h-11 bg-background/70" />

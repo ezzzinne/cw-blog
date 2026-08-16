@@ -38,7 +38,7 @@ export default function EditForm({ post }: EditFormProps) {
         <h2 className="mt-2 text-4xl font-extrabold tracking-tighter">Edit post</h2>
       </div>
 
-      <form action={formAction}>
+      <form action={formAction} aria-label="Edit post form">
         <div className="flex w-full flex-col items-center gap-6 rounded-2xl border border-border/70 bg-card/80 p-5 shadow-lg shadow-primary/5 sm:p-8">
           <Input type="hidden" name="id" defaultValue={post.id} />
 

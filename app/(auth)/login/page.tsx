@@ -121,7 +121,7 @@ export default function LoginPage() {
         </CardHeader>
 
         <CardContent>
-          <form noValidate onSubmit={handleSubmit} className="space-y-5 pt-3">
+          <form noValidate onSubmit={handleSubmit} className="space-y-5 pt-3" aria-label="Login form">
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
               <Input

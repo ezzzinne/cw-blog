@@ -23,7 +23,7 @@ export default function Page() {
         <h2 className="mt-2 text-4xl font-extrabold tracking-tighter">Create a post</h2>
         <p className="mt-3 text-muted-foreground">Give your ideas a beautiful place to land.</p>
       </div>
-      <form action={formAction}>
+      <form action={formAction} aria-label="Create post form">
         <div className="flex w-full flex-col items-center gap-6 rounded-2xl border border-border/70 bg-card/80 p-5 shadow-lg shadow-primary/5 sm:p-8">
           <Input
             type="text"
