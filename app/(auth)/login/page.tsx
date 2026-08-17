@@ -125,6 +125,7 @@ export default function LoginPage() {
       }
 
       router.replace(redirectTo);
+      router.refresh();
     } catch (error) {
       setError(getFirebaseAuthError(error));
     } finally {

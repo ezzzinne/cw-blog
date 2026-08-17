@@ -114,6 +114,7 @@ export default function SignupPage() {
       }
 
       router.replace(redirectTo);
+      router.refresh();
     } catch (error) {
       setError(getFirebaseErrorMessage(error));
     } finally {
