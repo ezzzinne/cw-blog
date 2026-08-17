@@ -27,7 +27,11 @@ export default function LogOutButton() {
 
     setOpen(false);
 
-    router.replace("/login");
+    await fetch("/api/auth/logout", {
+      method: "POST",
+    });
+
+    router.replace("/");
 
     router.refresh();
   }
