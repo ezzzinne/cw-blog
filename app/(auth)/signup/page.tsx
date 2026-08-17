@@ -87,7 +87,27 @@ export default function SignupPage() {
 
       const { email, password } = result.data;
 
-      await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password,
+      );
+
+      const idToken = await userCredential.user.getIdToken();
+
+      const response = await fetch("/api/auth/session", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          idToken,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to create session");
+      }
 
       router.replace("/explore");
     } catch (error) {
@@ -110,7 +130,12 @@ export default function SignupPage() {
         </CardHeader>
 
         <CardContent>
-          <form noValidate onSubmit={handleSubmit} className="space-y-5 pt-3" aria-label="Sign up form">
+          <form
+            noValidate
+            onSubmit={handleSubmit}
+            className="space-y-5 pt-3"
+            aria-label="Sign up form"
+          >
             {/* <div className="space-y-2">
               <Label htmlFor="name">Name</Label>
               <Input name="name" id="name" className="h-11 bg-background/70" />
