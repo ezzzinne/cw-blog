@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 
 import z from "zod";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/lib/firebase";
@@ -75,6 +75,10 @@ export default function LoginPage() {
 
   const router = useRouter();
 
+  const searchParams = useSearchParams();
+
+  const redirectTo = searchParams.get("redirect") || "/";
+
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
@@ -120,7 +124,7 @@ export default function LoginPage() {
         throw new Error("Failed to create session");
       }
 
-      router.replace("/explore");
+      router.replace(redirectTo);
     } catch (error) {
       setError(getFirebaseAuthError(error));
     } finally {
@@ -200,7 +204,7 @@ export default function LoginPage() {
             <p className="text-sm text-center text-muted-foreground">
               Don’t have an account?{" "}
               <Link
-                href="/signup"
+                href={`/signup?redirect=${encodeURIComponent(redirectTo)}`}
                 className="font-semibold text-primary underline-offset-4 hover:underline"
               >
                 Sign up

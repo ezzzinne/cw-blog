@@ -14,7 +14,7 @@ import { FirebaseError } from "firebase/app";
 import { useState } from "react";
 import z from "zod";
 
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { PasswordInput } from "@/components/password-input";
 
 function getFirebaseErrorMessage(error: unknown) {
@@ -64,6 +64,10 @@ export default function SignupPage() {
 
   const router = useRouter();
 
+  const searchParams = useSearchParams();
+
+  const redirectTo = searchParams.get("redirect") || "/";
+
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
@@ -109,7 +113,7 @@ export default function SignupPage() {
         throw new Error("Failed to create session");
       }
 
-      router.replace("/explore");
+      router.replace(redirectTo);
     } catch (error) {
       setError(getFirebaseErrorMessage(error));
     } finally {
