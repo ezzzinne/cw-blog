@@ -6,7 +6,7 @@ import { Pencil } from "lucide-react";
 import { onAuthStateChanged, User } from "firebase/auth";
 
 import DeleteButton from "@/components/button/delete-button";
-import { auth } from "@/firebase";
+import { auth } from "@/lib/firebase";
 
 type PostActionsProps = {
   postId: number;

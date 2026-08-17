@@ -3,7 +3,7 @@
 import { Button } from "./ui/button";
 import { PlusIcon } from "lucide-react";
 import Link from "next/link";
-import { auth } from "@/firebase";
+import { auth } from "@/lib/firebase";
 import { onAuthStateChanged, type User } from "firebase/auth";
 import { useEffect, useState } from "react";
 import LogOutButton from "./button/logout-button";
