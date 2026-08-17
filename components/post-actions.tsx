@@ -1,31 +1,17 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Pencil } from "lucide-react";
-import { onAuthStateChanged, User } from "firebase/auth";
 
 import DeleteButton from "@/components/button/delete-button";
-import { auth } from "@/lib/firebase";
+import { getAuthenticatedUser } from "@/lib/auth";
 
 type PostActionsProps = {
   postId: number;
 };
 
-export default function PostActions({ postId }: PostActionsProps) {
-  const [user, setUser] = useState<User | null>(auth.currentUser);
-  const [loading, setLoading] = useState(true);
+export default async function PostActions({ postId }: PostActionsProps) {
+  const user = await getAuthenticatedUser();
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      setLoading(false);
-    });
-
-    return unsubscribe;
-  }, []);
-
-  if (loading || !user) {
+  if (!user) {
     return null;
   }
 

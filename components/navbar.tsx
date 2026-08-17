@@ -1,19 +1,11 @@
-"use client";
-
 import { Button } from "./ui/button";
 import { PlusIcon } from "lucide-react";
 import Link from "next/link";
-import { auth } from "@/lib/firebase";
-import { onAuthStateChanged, type User } from "firebase/auth";
-import { useEffect, useState } from "react";
 import LogOutButton from "./button/logout-button";
+import { getAuthenticatedUser } from "@/lib/auth";
 
-export default function Navbar() {
-  const [user, setUser] = useState<User | null>(auth.currentUser);
-
-  useEffect(() => {
-    return onAuthStateChanged(auth, setUser);
-  }, []);
+export default async function Navbar() {
+  const user = await getAuthenticatedUser();
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/70 bg-background/80 backdrop-blur-xl">
